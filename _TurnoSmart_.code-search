@@ -6,4 +6,4 @@
 src/components/views/CustomerView.jsx:
   170    const departmentForTicket = generatedTicket ? companyDepartments.find(d => d.id === generatedTicket.departmentId) : null;
   171:   const companyInfo = company || { name: "Awey", logo: "" };
-  172  
+  172 
