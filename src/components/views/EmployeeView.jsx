@@ -84,7 +84,7 @@ const EmployeeView = ({ onLogout, currentUser, ...props }) => {
       >
         <div className="mb-8 p-2">
           <h1 className="text-2xl font-bold text-blue-600">
-            {company?.name || 'TurnoSmart'}
+            {company?.name || 'Aweyt'}
           </h1>
           <p className="text-sm text-slate-500 mt-1">Panel de {currentUser.role === 'superadmin' ? 'Super Admin' : currentUser.role === 'admin' ? 'Administrador' : 'Empleado'}</p>
         </div>

@@ -6,14 +6,14 @@ export const QueueProvider = ({ children }) => {
   const [departments, setDepartments] = useState(() => JSON.parse(localStorage.getItem('queueSystem_departments')) || []);
   const [services, setServices] = useState(() => JSON.parse(localStorage.getItem('queueSystem_services')) || []);
   const [tickets, setTickets] = useState(() => JSON.parse(localStorage.getItem('queueSystem_tickets')) || []);
-  const [allCompanies, setAllCompanies] = useState(() => JSON.parse(localStorage.getItem('turnosmart_companies')) || []);
+  const [allCompanies, setAllCompanies] = useState(() => JSON.parse(localStorage.getItem('aweyt_companies')) || []);
   
   useEffect(() => {
     const handleStorageChange = () => {
       setDepartments(JSON.parse(localStorage.getItem('queueSystem_departments')) || []);
       setServices(JSON.parse(localStorage.getItem('queueSystem_services')) || []);
       setTickets(JSON.parse(localStorage.getItem('queueSystem_tickets')) || []);
-      setAllCompanies(JSON.parse(localStorage.getItem('turnosmart_companies')) || []);
+      setAllCompanies(JSON.parse(localStorage.getItem('aweyt_companies')) || []);
     };
     
     window.addEventListener('storage', handleStorageChange);

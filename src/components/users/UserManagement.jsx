@@ -140,7 +140,7 @@ const UserManagement = ({ departments }) => {
   const { toast } = useToast();
 
   const fetchUsers = () => {
-    const storedUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+    const storedUsers = JSON.parse(localStorage.getItem('aweyt_users')) || [];
     const companyUsers = storedUsers.filter(u => u.companyId === currentUser.companyId && u.role !== 'superadmin');
     setUsers(companyUsers);
   };
@@ -152,7 +152,7 @@ const UserManagement = ({ departments }) => {
   }, [currentUser]);
 
   const handleSaveUser = (userData, userId) => {
-    let storedUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+    let storedUsers = JSON.parse(localStorage.getItem('aweyt_users')) || [];
     if (userId) { // Update
       storedUsers = storedUsers.map(u => {
         if (u.id === userId) {
@@ -178,16 +178,16 @@ const UserManagement = ({ departments }) => {
       storedUsers.push(newUser);
       toast({ title: 'Usuario creado', description: `El usuario ${userData.username} ha sido creado.` });
     }
-    localStorage.setItem('turnosmart_users', JSON.stringify(storedUsers));
+    localStorage.setItem('aweyt_users', JSON.stringify(storedUsers));
     fetchUsers();
     setIsNewUserDialogOpen(false);
     setEditingUser(null);
   };
 
   const handleDeleteUser = (userId) => {
-    let storedUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+    let storedUsers = JSON.parse(localStorage.getItem('aweyt_users')) || [];
     storedUsers = storedUsers.filter(u => u.id !== userId);
-    localStorage.setItem('turnosmart_users', JSON.stringify(storedUsers));
+    localStorage.setItem('aweyt_users', JSON.stringify(storedUsers));
     toast({ title: 'Usuario eliminado' });
     fetchUsers();
   };

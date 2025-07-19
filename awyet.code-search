@@ -1,0 +1,12 @@
+# Query: hostinger
+# ContextLines: 1
+
+3 resultados - 1 archivo
+
+plugins/visual-editor/edit-mode-script.js:
+  5  const ALLOWED_PARENT_ORIGINS = [
+  'https://www.aweyt.com',
+  'https://aweyt.vercel.app',
+  'http://localhost:4000'
+];
+

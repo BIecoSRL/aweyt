@@ -215,7 +215,7 @@ const LicenseManagement = () => {
   const { toast } = useToast();
 
   const fetchCompanies = () => {
-    const storedCompanies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+    const storedCompanies = JSON.parse(localStorage.getItem('aweyt_companies')) || [];
     setCompanies(storedCompanies);
   };
 
@@ -224,8 +224,8 @@ const LicenseManagement = () => {
   }, []);
 
   const handleSaveCompany = (companyData, companyId, oldAdminUsername) => {
-    let storedCompanies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
-    let storedUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+    let storedCompanies = JSON.parse(localStorage.getItem('aweyt_companies')) || [];
+    let storedUsers = JSON.parse(localStorage.getItem('aweyt_users')) || [];
 
     if (companyId) { // Update
       storedCompanies = storedCompanies.map(c => c.id === companyId ? { ...c, ...companyData, cost: companyData.totalCost, slug: c.slug || createSlug(c.name) } : c);
@@ -259,8 +259,8 @@ const LicenseManagement = () => {
       toast({ title: 'Empresa y administrador creados' });
     }
     
-    localStorage.setItem('turnosmart_companies', JSON.stringify(storedCompanies));
-    localStorage.setItem('turnosmart_users', JSON.stringify(storedUsers));
+    localStorage.setItem('aweyt_companies', JSON.stringify(storedCompanies));
+    localStorage.setItem('aweyt_users', JSON.stringify(storedUsers));
     fetchCompanies();
     setIsDialogOpen(false);
     setEditingCompany(null);
@@ -268,10 +268,10 @@ const LicenseManagement = () => {
   
   const handleDeleteCompany = (companyId) => {
       let storedCompanies = companies.filter(c => c.id !== companyId);
-      let storedUsers = (JSON.parse(localStorage.getItem('turnosmart_users')) || []).filter(u => u.companyId !== companyId);
+      let storedUsers = (JSON.parse(localStorage.getItem('aweyt_users')) || []).filter(u => u.companyId !== companyId);
 
-      localStorage.setItem('turnosmart_companies', JSON.stringify(storedCompanies));
-      localStorage.setItem('turnosmart_users', JSON.stringify(storedUsers));
+      localStorage.setItem('aweyt_companies', JSON.stringify(storedCompanies));
+      localStorage.setItem('aweyt_users', JSON.stringify(storedUsers));
 
       setCompanies(storedCompanies);
       toast({ title: 'Empresa eliminada', description: 'La empresa y sus usuarios han sido eliminados.' });

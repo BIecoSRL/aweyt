@@ -1,0 +1,194 @@
+# Query: TurnoSmart
+# ContextLines: 1
+
+50 resultados - Archivos de 13
+
+src/App.jsx:
+  22        <Helmet>
+  23:         <title>{company?.name || 'TurnoSmart'} - Sistema de Gestión de Turnos</title>
+  24:         <meta name="description" content={`Software profesional de gestión de turnos para ${company?.name || 'TurnoSmart'}. Automatiza el control de filas y mejora la eficiencia.`} />
+  25        </Helmet>
+
+src/components/config/ScreenConfig.jsx:
+   93    useEffect(() => {
+   94:     const storedCompanies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+   95      setCompanies(storedCompanies);
+
+  104      });
+  105:     localStorage.setItem('turnosmart_companies', JSON.stringify(updatedCompanies));
+  106      setCompanies(updatedCompanies);
+
+src/components/dashboard/SuperAdminDashboard.jsx:
+  41    useEffect(() => {
+  42:     const storedCompanies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+  43      setCompanies(storedCompanies);
+
+src/components/finance/Finance.jsx:
+   39          doc.setFontSize(22);
+   40:         doc.text(systemSettings.name || 'TurnoSmart', 50, 25);
+   41          
+
+   91    useEffect(() => {
+   92:     const storedCompanies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+   93      setCompanies(storedCompanies);
+   94:     const storedSettings = JSON.parse(localStorage.getItem('turnosmart_system_settings')) || {};
+   95      setSystemSettings(storedSettings);
+
+  106      doc.setFontSize(22);
+  107:     doc.text(systemSettings.name || 'TurnoSmart', 50, 25);
+  108      
+
+  119          [
+  120:           `Cuota de Licencia TurnoSmart`,
+  121            '1',
+
+  148      doc.setFontSize(22);
+  149:     doc.text(systemSettings.name || 'TurnoSmart', 50, 25);
+  150  
+
+  191      });
+  192:     localStorage.setItem('turnosmart_companies', JSON.stringify(updatedCompanies));
+  193      setCompanies(updatedCompanies);
+
+src/components/licenses/LicenseHistory.jsx:
+  24    useEffect(() => {
+  25:     const storedCompanies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+  26      const allLicenses = storedCompanies.map(company => ({
+
+src/components/licenses/LicenseManagement.jsx:
+  217    const fetchCompanies = () => {
+  218:     const storedCompanies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+  219      setCompanies(storedCompanies);
+
+  226    const handleSaveCompany = (companyData, companyId, oldAdminUsername) => {
+  227:     let storedCompanies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+  228:     let storedUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+  229  
+
+  261      
+  262:     localStorage.setItem('turnosmart_companies', JSON.stringify(storedCompanies));
+  263:     localStorage.setItem('turnosmart_users', JSON.stringify(storedUsers));
+  264      fetchCompanies();
+
+  270        let storedCompanies = companies.filter(c => c.id !== companyId);
+  271:       let storedUsers = (JSON.parse(localStorage.getItem('turnosmart_users')) || []).filter(u => u.companyId !== companyId);
+  272  
+  273:       localStorage.setItem('turnosmart_companies', JSON.stringify(storedCompanies));
+  274:       localStorage.setItem('turnosmart_users', JSON.stringify(storedUsers));
+  275  
+
+src/components/settings/SuperAdminSettings.jsx:
+   61    useEffect(() => {
+   62:     const storedSettings = JSON.parse(localStorage.getItem('turnosmart_system_settings')) || { bankAccounts: [] };
+   63      setSettings(storedSettings);
+
+   67    const fetchAdminUsers = () => {
+   68:     const allUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+   69      setAdminUsers(allUsers.filter(u => u.role === 'superadmin'));
+
+  102    const saveSettings = () => {
+  103:     localStorage.setItem('turnosmart_system_settings', JSON.stringify(settings));
+  104      toast({ title: 'Ajustes Guardados', description: 'La configuración del sistema ha sido actualizada.' });
+
+  107    const handleSaveUser = (userData, userId) => {
+  108:     let allUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+  109      if (userId) { // Update
+
+  134      }
+  135:     localStorage.setItem('turnosmart_users', JSON.stringify(allUsers));
+  136      fetchAdminUsers();
+
+  145      }
+  146:     let allUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+  147      allUsers = allUsers.filter(u => u.id !== userId);
+  148:     localStorage.setItem('turnosmart_users', JSON.stringify(allUsers));
+  149      fetchAdminUsers();
+
+src/components/users/UserManagement.jsx:
+  142    const fetchUsers = () => {
+  143:     const storedUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+  144      const companyUsers = storedUsers.filter(u => u.companyId === currentUser.companyId && u.role !== 'superadmin');
+
+  154    const handleSaveUser = (userData, userId) => {
+  155:     let storedUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+  156      if (userId) { // Update
+
+  180      }
+  181:     localStorage.setItem('turnosmart_users', JSON.stringify(storedUsers));
+  182      fetchUsers();
+
+  187    const handleDeleteUser = (userId) => {
+  188:     let storedUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+  189      storedUsers = storedUsers.filter(u => u.id !== userId);
+  190:     localStorage.setItem('turnosmart_users', JSON.stringify(storedUsers));
+  191      toast({ title: 'Usuario eliminado' });
+
+src/components/views/EmployeeView.jsx:
+  86            <h1 className="text-2xl font-bold text-blue-600">
+  87:             {company?.name || 'TurnoSmart'}
+  88            </h1>
+
+src/components/views/LoginView.jsx:
+  26          <h1 className="text-5xl font-bold text-blue-600 mb-2">
+  27:           Bienvenido a TurnoSmart
+  28          </h1>
+
+src/components/views/PublicDisplayView.jsx:
+   20      if (companySlug) {
+   21:       const companies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+   22        const currentCompany = companies.find(c => c.slug === companySlug);
+
+  180        <footer className="w-full text-center mt-8 text-white z-10 bg-black/30 p-2 rounded-lg">
+  181:         <p>TurnoSmart - {new Date().toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+  182        </footer>
+
+src/contexts/AuthContext.jsx:
+  15      try {
+  16:       let users = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+  17        
+
+  31        const finalUsers = [...nonSuperAdminUsers, adminUser];
+  32:       localStorage.setItem('turnosmart_users', JSON.stringify(finalUsers));
+  33        console.log("Super Administrador ha sido reestablecido.");
+
+  42      if (user?.companyId && user.companyId !== 'super') {
+  43:       const companies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+  44        const userCompany = companies.find(c => c.id === user.companyId);
+
+  46      } else {
+  47:       const systemSettings = JSON.parse(localStorage.getItem('turnosmart_system_settings')) || {};
+  48:       setCompany({ name: systemSettings.name || 'TurnoSmart' });
+  49      }
+
+  55      
+  56:     const sessionUser = localStorage.getItem('turnosmart_user');
+  57      if (sessionUser) {
+
+  59        // Validar si el usuario en sesión sigue existiendo, especialmente si era un superadmin
+  60:       const users = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+  61        const userExists = users.some(u => u.id === parsedUser.id && u.username === parsedUser.username);
+
+  67          // Si el usuario en sesión ya no existe (p. ej. un superadmin eliminado), se limpia la sesión
+  68:         localStorage.removeItem('turnosmart_user');
+  69          setUser(null);
+
+  75    const signIn = useCallback((username, password) => {
+  76:     const users = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+  77      const foundUser = users.find(u => u.username === username);
+
+  90      setUser(userData);
+  91:     localStorage.setItem('turnosmart_user', JSON.stringify(userData));
+  92      loadCompanyData(userData);
+
+  98      setCompany(null);
+  99:     localStorage.removeItem('turnosmart_user');
+  100    }, []);
+
+src/contexts/QueueContext.jsx:
+   8    const [tickets, setTickets] = useState(() => JSON.parse(localStorage.getItem('queueSystem_tickets')) || []);
+   9:   const [allCompanies, setAllCompanies] = useState(() => JSON.parse(localStorage.getItem('turnosmart_companies')) || []);
+  10    
+
+  15        setTickets(JSON.parse(localStorage.getItem('queueSystem_tickets')) || []);
+  16:       setAllCompanies(JSON.parse(localStorage.getItem('turnosmart_companies')) || []);
+  17      };

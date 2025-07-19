@@ -18,7 +18,7 @@ const PublicDisplayView = () => {
 
   useEffect(() => {
     if (companySlug) {
-      const companies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+      const companies = JSON.parse(localStorage.getItem('aweyt_companies')) || [];
       const currentCompany = companies.find(c => c.slug === companySlug);
       if (currentCompany) {
         setCompany(currentCompany);
@@ -178,7 +178,7 @@ const PublicDisplayView = () => {
       </main>
       
       <footer className="w-full text-center mt-8 text-white z-10 bg-black/30 p-2 rounded-lg">
-        <p>TurnoSmart - {new Date().toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        <p>Aweyt - {new Date().toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
       </footer>
     </div>
   );

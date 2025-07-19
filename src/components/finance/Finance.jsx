@@ -37,7 +37,7 @@ const IndependentInvoiceForm = ({ onSave, companies, systemSettings }) => {
             doc.addImage(systemSettings.logo, 'PNG', 14, 10, 30, 30);
         }
         doc.setFontSize(22);
-        doc.text(systemSettings.name || 'TurnoSmart', 50, 25);
+        doc.text(systemSettings.name || 'Aweyt', 50, 25);
         
         doc.setFontSize(12);
         doc.text(`Factura para: ${company.name}`, 14, 50);
@@ -89,9 +89,9 @@ const Finance = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const storedCompanies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+    const storedCompanies = JSON.parse(localStorage.getItem('aweyt_companies')) || [];
     setCompanies(storedCompanies);
-    const storedSettings = JSON.parse(localStorage.getItem('turnosmart_system_settings')) || {};
+    const storedSettings = JSON.parse(localStorage.getItem('aweyt_system_settings')) || {};
     setSystemSettings(storedSettings);
   }, []);
 
@@ -104,7 +104,7 @@ const Finance = () => {
       doc.addImage(systemSettings.logo, 'PNG', 14, 10, 30, 30);
     }
     doc.setFontSize(22);
-    doc.text(systemSettings.name || 'TurnoSmart', 50, 25);
+    doc.text(systemSettings.name || 'Aweyt', 50, 25);
     
     doc.setFontSize(12);
     doc.text(`Factura para: ${company.name}`, 14, 50);
@@ -117,7 +117,7 @@ const Finance = () => {
       head: [['Descripción', 'Cantidad', 'Precio Unitario', 'Total']],
       body: [
         [
-          `Cuota de Licencia TurnoSmart`,
+          `Cuota de Licencia Aweyt`,
           '1',
           `${payment.amount.toFixed(2)} ${company.currency}`,
           `${payment.amount.toFixed(2)} ${company.currency}`
@@ -146,7 +146,7 @@ const Finance = () => {
       doc.addImage(systemSettings.logo, 'PNG', 14, 10, 30, 30);
     }
     doc.setFontSize(22);
-    doc.text(systemSettings.name || 'TurnoSmart', 50, 25);
+    doc.text(systemSettings.name || 'Aweyt', 50, 25);
 
     doc.setFontSize(16);
     doc.text(`Estado de Cuenta: ${company.name}`, 14, 50);
@@ -189,7 +189,7 @@ const Finance = () => {
       }
       return company;
     });
-    localStorage.setItem('turnosmart_companies', JSON.stringify(updatedCompanies));
+    localStorage.setItem('aweyt_companies', JSON.stringify(updatedCompanies));
     setCompanies(updatedCompanies);
     toast({ title: "Pago Registrado", description: "El estado del pago ha sido actualizado a 'Pagado'." });
   };

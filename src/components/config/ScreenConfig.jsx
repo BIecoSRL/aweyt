@@ -91,7 +91,7 @@ const ScreenConfig = () => {
   const [editingCompany, setEditingCompany] = useState(null);
 
   useEffect(() => {
-    const storedCompanies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+    const storedCompanies = JSON.parse(localStorage.getItem('aweyt_companies')) || [];
     setCompanies(storedCompanies);
   }, []);
 
@@ -102,7 +102,7 @@ const ScreenConfig = () => {
       }
       return c;
     });
-    localStorage.setItem('turnosmart_companies', JSON.stringify(updatedCompanies));
+    localStorage.setItem('aweyt_companies', JSON.stringify(updatedCompanies));
     setCompanies(updatedCompanies);
     setEditingCompany(null);
   };

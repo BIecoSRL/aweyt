@@ -59,13 +59,13 @@ const SuperAdminSettings = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const storedSettings = JSON.parse(localStorage.getItem('turnosmart_system_settings')) || { bankAccounts: [] };
+    const storedSettings = JSON.parse(localStorage.getItem('aweyt_system_settings')) || { bankAccounts: [] };
     setSettings(storedSettings);
     fetchAdminUsers();
   }, []);
 
   const fetchAdminUsers = () => {
-    const allUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+    const allUsers = JSON.parse(localStorage.getItem('aweyt_users')) || [];
     setAdminUsers(allUsers.filter(u => u.role === 'superadmin'));
   };
 
@@ -100,12 +100,12 @@ const SuperAdminSettings = () => {
   };
 
   const saveSettings = () => {
-    localStorage.setItem('turnosmart_system_settings', JSON.stringify(settings));
+    localStorage.setItem('aweyt_system_settings', JSON.stringify(settings));
     toast({ title: 'Ajustes Guardados', description: 'La configuración del sistema ha sido actualizada.' });
   };
 
   const handleSaveUser = (userData, userId) => {
-    let allUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+    let allUsers = JSON.parse(localStorage.getItem('aweyt_users')) || [];
     if (userId) { // Update
       allUsers = allUsers.map(u => {
         if (u.id === userId) {
@@ -132,7 +132,7 @@ const SuperAdminSettings = () => {
       allUsers.push(newUser);
       toast({ title: 'Administrador creado' });
     }
-    localStorage.setItem('turnosmart_users', JSON.stringify(allUsers));
+    localStorage.setItem('aweyt_users', JSON.stringify(allUsers));
     fetchAdminUsers();
     setIsUserDialogOpen(false);
     setEditingUser(null);
@@ -143,9 +143,9 @@ const SuperAdminSettings = () => {
       toast({ variant: 'destructive', title: 'Acción no permitida', description: 'No se puede eliminar al único super administrador.' });
       return;
     }
-    let allUsers = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+    let allUsers = JSON.parse(localStorage.getItem('aweyt_users')) || [];
     allUsers = allUsers.filter(u => u.id !== userId);
-    localStorage.setItem('turnosmart_users', JSON.stringify(allUsers));
+    localStorage.setItem('aweyt_users', JSON.stringify(allUsers));
     fetchAdminUsers();
     toast({ title: 'Administrador eliminado' });
   };

@@ -20,8 +20,8 @@ function App() {
   return (
     <>
       <Helmet>
-        <title>{company?.name || 'TurnoSmart'} - Sistema de Gestión de Turnos</title>
-        <meta name="description" content={`Software profesional de gestión de turnos para ${company?.name || 'TurnoSmart'}. Automatiza el control de filas y mejora la eficiencia.`} />
+        <title>{company?.name || 'Aweyt'} - Sistema de Gestión de Turnos</title>
+        <meta name="description" content={`Software profesional de gestión de turnos para ${company?.name || 'Aweyt'}. Automatiza el control de filas y mejora la eficiencia.`} />
       </Helmet>
       <div className="min-h-screen bg-background text-foreground">
         <Routes>

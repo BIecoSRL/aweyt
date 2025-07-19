@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
 
   const resetAndEnsureSuperAdmin = useCallback(() => {
     try {
-      let users = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+      let users = JSON.parse(localStorage.getItem('aweyt_users')) || [];
       
       const nonSuperAdminUsers = users.filter(u => u.role !== 'superadmin');
       
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
       };
       
       const finalUsers = [...nonSuperAdminUsers, adminUser];
-      localStorage.setItem('turnosmart_users', JSON.stringify(finalUsers));
+      localStorage.setItem('aweyt_users', JSON.stringify(finalUsers));
       console.log("Super Administrador ha sido reestablecido.");
 
     } catch (e) {
@@ -40,12 +40,12 @@ export const AuthProvider = ({ children }) => {
   
   const loadCompanyData = (user) => {
     if (user?.companyId && user.companyId !== 'super') {
-      const companies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+      const companies = JSON.parse(localStorage.getItem('aweyt_companies')) || [];
       const userCompany = companies.find(c => c.id === user.companyId);
       setCompany(userCompany || null);
     } else {
-      const systemSettings = JSON.parse(localStorage.getItem('turnosmart_system_settings')) || {};
-      setCompany({ name: systemSettings.name || 'TurnoSmart' });
+      const systemSettings = JSON.parse(localStorage.getItem('aweyt_system_settings')) || {};
+      setCompany({ name: systemSettings.name || 'Aweyt' });
     }
   };
 
@@ -53,11 +53,11 @@ export const AuthProvider = ({ children }) => {
     // Se asegura de que el superadmin se reestablezca en cada carga de la app
     resetAndEnsureSuperAdmin();
     
-    const sessionUser = localStorage.getItem('turnosmart_user');
+    const sessionUser = localStorage.getItem('aweyt_user');
     if (sessionUser) {
       const parsedUser = JSON.parse(sessionUser);
       // Validar si el usuario en sesión sigue existiendo, especialmente si era un superadmin
-      const users = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+      const users = JSON.parse(localStorage.getItem('aweyt_users')) || [];
       const userExists = users.some(u => u.id === parsedUser.id && u.username === parsedUser.username);
 
       if (userExists) {
@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
         loadCompanyData(parsedUser);
       } else {
         // Si el usuario en sesión ya no existe (p. ej. un superadmin eliminado), se limpia la sesión
-        localStorage.removeItem('turnosmart_user');
+        localStorage.removeItem('aweyt_user');
         setUser(null);
       }
     }
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
   }, [resetAndEnsureSuperAdmin]);
 
   const signIn = useCallback((username, password) => {
-    const users = JSON.parse(localStorage.getItem('turnosmart_users')) || [];
+    const users = JSON.parse(localStorage.getItem('aweyt_users')) || [];
     const foundUser = users.find(u => u.username === username);
 
     if (!foundUser || !bcrypt.compareSync(password, foundUser.passwordHash)) {
@@ -88,7 +88,7 @@ export const AuthProvider = ({ children }) => {
 
     const { passwordHash, ...userData } = foundUser;
     setUser(userData);
-    localStorage.setItem('turnosmart_user', JSON.stringify(userData));
+    localStorage.setItem('aweyt_user', JSON.stringify(userData));
     loadCompanyData(userData);
     toast({ title: "¡Bienvenido!", description: `Has iniciado sesión como ${userData.username}.` });
   }, [toast]);
@@ -96,7 +96,7 @@ export const AuthProvider = ({ children }) => {
   const signOut = useCallback(() => {
     setUser(null);
     setCompany(null);
-    localStorage.removeItem('turnosmart_user');
+    localStorage.removeItem('aweyt_user');
   }, []);
 
   const value = { user, loading, signIn, signOut, company };

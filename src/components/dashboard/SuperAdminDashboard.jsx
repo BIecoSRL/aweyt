@@ -39,7 +39,7 @@ const SuperAdminDashboard = () => {
   const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
-    const storedCompanies = JSON.parse(localStorage.getItem('turnosmart_companies')) || [];
+    const storedCompanies = JSON.parse(localStorage.getItem('aweyt_companies')) || [];
     setCompanies(storedCompanies);
   }, []);
 
