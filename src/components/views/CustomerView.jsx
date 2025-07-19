@@ -168,7 +168,7 @@ const CustomerView = () => {
     : 0;
     
   const departmentForTicket = generatedTicket ? companyDepartments.find(d => d.id === generatedTicket.departmentId) : null;
-  const companyInfo = company || { name: "TurnoSmart", logo: "" };
+  const companyInfo = company || { name: Aweyt, logo: "" };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 relative bg-slate-50">
