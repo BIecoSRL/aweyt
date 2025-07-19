@@ -1,9 +1,8 @@
-
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { supabase } from '../../supabaseClient';
+import { supabase } from '../../../lib/supabaseClient';
 
-export default function CustomerView() {PublicDisplayViewcostu
+export default function CustomerView() {
   const { slug } = useParams();
   const [customerData, setCustomerData] = useState(null);
 
