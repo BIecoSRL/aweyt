@@ -24,7 +24,7 @@ const LoginView = () => {
     >
       <div className="text-center mb-12">
         <h1 className="text-5xl font-bold text-blue-600 mb-2">
-          Bienvenido a Aweyt
+          Aweyt
         </h1>
         <p className="text-xl text-slate-500">Sistema de Gestión de Turnos</p>
       </div>
