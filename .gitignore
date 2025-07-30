@@ -1,0 +1,19 @@
+# Evita subir archivos sensibles
+.env
+.env.local
+.env.*.local
+
+# Dependencias
+node_modules/
+
+# Build
+build/
+dist/
+
+# Archivos temporales
+*.log
+*.DS_Store
+
+# Configuración local
+.vscode/
+.idea/
