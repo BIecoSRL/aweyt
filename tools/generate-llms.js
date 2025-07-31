@@ -139,7 +139,7 @@ function processPageFile(filePath, routes) {
     const content = fs.readFileSync(filePath, 'utf8');
     return extractHelmetData(content, filePath, routes);
   } catch (error) {
-    console.error(`❌ Error processing ${filePath}:`, error.message);
+    console.error(`Error processing ${filePath}:`, error.message);
     return null;
   }
 }
@@ -161,7 +161,7 @@ function main() {
       .filter(Boolean);
     
     if (pages.length === 0) {
-      console.error('❌ No pages with Helmet components found!');
+      console.error('No pages with Helmet components found!');
       process.exit(1);
     }
   }

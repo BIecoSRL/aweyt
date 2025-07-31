@@ -4,15 +4,29 @@ import { LogIn, User, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/lib/supabaseClient';
 
 const LoginView = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const { signIn, systemSettings } = useAuth();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    signIn(username, password);
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: username,
+      password,
+    });
+
+    if (error) {
+      console.error('Error de login:', error.message);
+      alert('Credenciales inválidas');
+      return;
+    }
+
+    console.log('Login exitoso:', data.user);
+    // Aquí puedes redirigir o actualizar el estado según tu lógica
   };
 
   const footerStyle = {

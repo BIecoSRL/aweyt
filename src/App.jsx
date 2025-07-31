@@ -10,6 +10,8 @@ import LoginView from '@/components/views/LoginView';
 import CustomerView from '@/components/views/CustomerView';
 import EmployeeView from '@/components/views/EmployeeView';
 import PublicDisplayView from '@/components/views/PublicDisplayView';
+import ForgotPasswordView from '@/components/views/ForgotPasswordView';
+
 
 
 function App() {
@@ -44,6 +46,7 @@ function App() {
               user ? <Navigate to="/panel" replace /> : <LoginView />
             } 
           />
+          <Route path="/reset-password" element={<ForgotPasswordView />} />
           <Route 
             path="/panel" 
             element={

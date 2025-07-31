@@ -1,3 +1,7 @@
+// DEBUG TEMPORAL: Verificar si Vercel expone correctamente las variables de entorno
+console.log('SUPABASE_URL', import.meta.env.VITE_SUPABASE_URL);
+console.log('SUPABASE_ANON_KEY', import.meta.env.VITE_SUPABASE_ANON_KEY);
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
